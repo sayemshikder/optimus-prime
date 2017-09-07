@@ -49,6 +49,9 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/allpost', 'AllpostController@index');
 
         Route::get('/facebook', 'FacebookController@index');
+
+//        Twitter
+
         Route::get('/twitter', 'TwitterController@index');
         Route::post('/twitter/retweet', 'TwitterController@retweet');
         Route::post('/twitter/message', 'TwitterController@twSendMsg');
@@ -61,6 +64,8 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/twitter/autoreply', 'TwitterController@autoReplyIndex');
         Route::post('/twitter/autoreply', 'TwitterController@autoReply');
         Route::post('/twitter/autoreplyall', 'TwitterController@autoReplyAll');
+        Route::get('/twitter/mega/masssend', 'TwitterController@massMegaSendIndex');
+
         Route::get('/tumblr', 'TumblrController@index');
         Route::get('/wordpress', 'WordpressController@index');
 
@@ -87,7 +92,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('/settings/notifications', 'Settings@notifySave');
         Route::post('/save/fb/bot/config', 'Settings@fbBotConfigSave');
         Route::post('/settings/update/theme', 'Settings@updateTheme');
-        Route::post('/pinsave','Settings@pinSave');
+        Route::post('/pinsave', 'Settings@pinSave');
 
         // deleting
         Route::post('/fbdel', 'FacebookController@fbDelete');
@@ -107,9 +112,9 @@ Route::group(['middleware' => 'web'], function () {
 //        Image upload
 
         Route::post('/iup', 'ImageUpload@iup');
-        Route::post('/content/upload','ImageUpload@contentUpload');
-        Route::post('/content/list','ImageUpload@showImages');
-        Route::post('/content/delete','ImageUpload@deleteImage');
+        Route::post('/content/upload', 'ImageUpload@contentUpload');
+        Route::post('/content/list', 'ImageUpload@showImages');
+        Route::post('/content/delete', 'ImageUpload@deleteImage');
 
         Route::post('/addschedule', 'ScheduleController@addSchedule');
         Route::get('/schedules', 'ScheduleController@index');
@@ -194,6 +199,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('/linkedin/mass_comment', 'LinkedinController@fireMassComment');
         Route::post('/linkedin/comment/{companyId}/{updateKey}', 'LinkedinController@fireComment');
         Route::get('/linkedin/updates', 'LinkedinController@updates');
+        Route::get('linkedin/callback','LinkedinController@callback');
 
         Route::get('/profile', 'ProfileController@index');
         Route::post('/profile', 'ProfileController@update');
@@ -273,8 +279,8 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/pinterest', 'PinterestController@index');
         Route::get('/pinterest/scraper', 'PinterestController@scraperIndex');
         Route::post('/pinterest/search', 'PinterestController@scraper');
-        Route::get('/pinterest/home','PinterestController@home');
-        Route::post('/pinterest/write','PinterestController@write');
+        Route::get('/pinterest/home', 'PinterestController@home');
+        Route::post('/pinterest/write', 'PinterestController@write');
 
 //        virtual assistant routes
 

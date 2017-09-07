@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\followers;
 use App\Setting;
 use Illuminate\Http\Request;
 
@@ -16,12 +17,13 @@ class TwitterController extends Controller
         \App::setLocale(CoreController::getLang());
 
     }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public function index()
     {
-        if(!Data::myPackage('tw')){
+        if (!Data::myPackage('tw')) {
             return view('errors.404');
         }
 
@@ -78,7 +80,7 @@ class TwitterController extends Controller
      */
     public static function retweetnow($id)
     {
-        if(!Data::myPackage('tw')){
+        if (!Data::myPackage('tw')) {
             return view('errors.404');
         }
 
@@ -128,7 +130,7 @@ class TwitterController extends Controller
     public static function SendMsg($user, $message)
     {
 
-        if(!Data::myPackage('tw')){
+        if (!Data::myPackage('tw')) {
             return view('errors.404');
         }
 
@@ -181,7 +183,7 @@ class TwitterController extends Controller
     public static function twReplyNow($id, $user, $text)
     {
 
-        if(!Data::myPackage('tw')){
+        if (!Data::myPackage('tw')) {
             return view('errors.404');
         }
 
@@ -210,7 +212,7 @@ class TwitterController extends Controller
     public function massSend()
     {
 
-        if(!Data::myPackage('tw')){
+        if (!Data::myPackage('tw')) {
             return view('errors.404');
         }
 
@@ -273,7 +275,7 @@ class TwitterController extends Controller
      */
     public function sendMessage()
     {
-        if(!Data::myPackage('tw')){
+        if (!Data::myPackage('tw')) {
             return view('errors.404');
         }
 
@@ -286,7 +288,7 @@ class TwitterController extends Controller
     public function autoRetweet()
     {
 
-        if(!Data::myPackage('tw')){
+        if (!Data::myPackage('tw')) {
             return view('errors.404');
         }
 
@@ -329,7 +331,7 @@ class TwitterController extends Controller
     public function autoRetweetIndex()
     {
 
-        if(!Data::myPackage('tw')){
+        if (!Data::myPackage('tw')) {
             return view('errors.404');
         }
 
@@ -343,7 +345,7 @@ class TwitterController extends Controller
     public function autoReply(Request $request)
     {
 
-        if(!Data::myPackage('tw')){
+        if (!Data::myPackage('tw')) {
             return view('errors.404');
         }
 
@@ -429,11 +431,27 @@ class TwitterController extends Controller
      */
     public function autoReplyIndex()
     {
-        if(!Data::myPackage('tw')){
+        if (!Data::myPackage('tw')) {
             return view('errors.404');
         }
 
         return view('reply');
+    }
+
+    public function massMegaSendIndex()
+    {
+        $consumerKey = FollowersController::get_value('twConKey');
+        $consumerSecret = FollowersController::get_value('twConSec');
+        $accessToken = FollowersController::get_value('twToken');
+        $tokenSecret = FollowersController::get_value('twTokenSec');
+
+        $twitter = new \Twitter($consumerKey, $consumerSecret, $accessToken, $tokenSecret);
+
+        $list = $twitter->loadUserFollowersList('OfficialMrAkash');
+        print_r($list);
+
+
+
     }
 
 

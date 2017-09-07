@@ -165,11 +165,15 @@
                         <li><a href="{{ url('/twitter') }}"><i class="fa fa-twitter"></i>
                                 <span>{{trans('sidebar.My account')}}</span></a>
                         </li>
-                        <li><a href="{{ url('/twitter/message/send') }}"><i class="fa fa-envelope"></i>
+                        <li><a href="{{ url('/twitter/message/send') }}"><i class="fa fa-envelope-square"></i>
                                 <span>{{trans('sidebar.Send Direct Message')}}</span></a>
                         </li>
+
                         <li><a href="{{ url('/twitter/masssend') }}"><i class="fa fa-envelope"></i>
                                 <span>{{trans('sidebar.Mass Message Send')}}</span></a></li>
+                        <li><a href="{{ url('/twitter/mega/masssend') }}"><i class="fa fa-envelope-o"></i>
+                                <span>Mega Mass Send</span></a></li>
+
                         <li><a href="{{ url('/twitter/autoretweet') }}"><i class="fa fa-retweet"></i>
                                 <span>{{trans('sidebar.Mass Retweet')}}</span></a></li>
                         <li><a href="{{ url('/twitter/autoreply') }}"><i class="fa fa-reply"></i>
