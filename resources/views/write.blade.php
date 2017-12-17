@@ -409,19 +409,19 @@
                                     </button>
                                 </div>
                                 <br><br>
-                                <div class="btn-group">
+                                {{--<div class="btn-group">--}}
 
-                                    <button data-step="13" data-toggle="modal" data-target="#creatorModal"
-                                            data-intro="Click here to To create content" id="contentCreator"
-                                            class="btn btn-primary"><i class="fa fa-image"></i> Create Content
-                                    </button>
+                                    {{--<button data-step="13" data-toggle="modal" data-target="#creatorModal"--}}
+                                            {{--data-intro="Click here to To create content" id="contentCreator"--}}
+                                            {{--class="btn btn-primary"><i class="fa fa-image"></i> Create Content--}}
+                                    {{--</button>--}}
 
 
-                                    <button data-step="13" data-toggle="modal" data-target="#contentListModal"
-                                            data-intro="Click here to See the contents" id="btnContentList"
-                                            class="btn btn-warning"><i class="fa fa-list"></i> Created Contents
-                                    </button>
-                                </div>
+                                    {{--<button data-step="13" data-toggle="modal" data-target="#contentListModal"--}}
+                                            {{--data-intro="Click here to See the contents" id="btnContentList"--}}
+                                            {{--class="btn btn-warning"><i class="fa fa-list"></i> Created Contents--}}
+                                    {{--</button>--}}
+                                {{--</div>--}}
                             </div>
                             <div id="ss" style="display: none;" class="form-group">
                                 <div style="padding-left: 10px">

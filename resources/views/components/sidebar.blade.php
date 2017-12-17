@@ -393,39 +393,39 @@
 
             {!! \App\Http\Controllers\Plugins::menu("all") !!}
 
-            @if(Auth::user()->type == 'admin')
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-puzzle-piece"></i>
-                        <span>{{trans('sidebar.Plugins')}}</span><i class="fa fa-angle-left pull-right"></i>
+            {{--@if(Auth::user()->type == 'admin')--}}
+                {{--<li class="treeview">--}}
+                    {{--<a href="#">--}}
+                        {{--<i class="fa fa-puzzle-piece"></i>--}}
+                        {{--<span>{{trans('sidebar.Plugins')}}</span><i class="fa fa-angle-left pull-right"></i>--}}
 
-                    </a>
-                    <ul class="treeview-menu" style="display: none;">
-                        <li><a href="{{ url('/plugin/add') }}"><i class="fa fa-user-plus"></i>
-                                <span>{{trans('sidebar.Add Plugin')}}</span></a>
-                        </li>
-                        <li><a href="{{ url('/plugin/list') }}"><i
-                                        class="fa fa-list-ul"></i><span>{{trans('sidebar.Plugin List')}}</span></a></li>
-                    </ul>
-                </li>
+                    {{--</a>--}}
+                    {{--<ul class="treeview-menu" style="display: none;">--}}
+                        {{--<li><a href="{{ url('/plugin/add') }}"><i class="fa fa-user-plus"></i>--}}
+                                {{--<span>{{trans('sidebar.Add Plugin')}}</span></a>--}}
+                        {{--</li>--}}
+                        {{--<li><a href="{{ url('/plugin/list') }}"><i--}}
+                                        {{--class="fa fa-list-ul"></i><span>{{trans('sidebar.Plugin List')}}</span></a></li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
 
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-shopping-bag"></i>
-                        <span>{{trans('sidebar.Shop')}}</span><i class="fa fa-angle-left pull-right"></i>
+                {{--<li class="treeview">--}}
+                    {{--<a href="#">--}}
+                        {{--<i class="fa fa-shopping-bag"></i>--}}
+                        {{--<span>{{trans('sidebar.Shop')}}</span><i class="fa fa-angle-left pull-right"></i>--}}
 
-                    </a>
-                    <ul class="treeview-menu" style="display: none;">
-                        <li><a href="{{ url('/shop') }}"><i class="fa fa-home"></i>
-                                <span>{{trans('sidebar.Plugin Shop')}} </span></a>
-                        </li>
+                    {{--</a>--}}
+                    {{--<ul class="treeview-menu" style="display: none;">--}}
+                        {{--<li><a href="{{ url('/shop') }}"><i class="fa fa-home"></i>--}}
+                                {{--<span>{{trans('sidebar.Plugin Shop')}} </span></a>--}}
+                        {{--</li>--}}
 
-                    </ul>
-                </li>
+                    {{--</ul>--}}
+                {{--</li>--}}
 
 
 
-            @endif
+            {{--@endif--}}
 
 
         </ul>
