@@ -386,7 +386,7 @@ class Write extends Controller
 
 
         } catch (Exception $e) {
-//
+
         }
 
     }
@@ -540,15 +540,6 @@ class Write extends Controller
         ]);
 
 
-//        $content = [
-//
-//            "message" => $re->data,
-//            "link" => "",
-//            "picture" => "https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-9/13310554_1715488272046223_9136497093754578104_n.jpg?oh=a1fb32069ff6c4c5fdf751eb8be1a04b&oe=57CB8C14",
-//            "name" => "",
-//            "caption" => "",
-//            "description" => ""
-//        ];
 
         if ($imagepost == 'yes') {
             try {
@@ -584,7 +575,6 @@ class Write extends Controller
                     "name" => $name,
                     "caption" => $caption,
                     "description" => $desciption,
-//                    "source" => $fb->fileToUpload(public_path()."/uploads/".$imageName)
                 ];
                 $post = $fb->post($pageId . "/feed", $content, $accessToken);
                 if (isset($postId)) {
@@ -1115,13 +1105,13 @@ class Write extends Controller
                 return "Delete form twitter : success";
             } catch (\TwitterException $te) {
                 return "Delete form twitter : error";
-//                return $te->getMessage();
+
             } catch (Exception $e) {
                 return "Delete form twitter : error";
-//                return $e->getMessage();
+
             }
         } else {
-//            return "Twitter post could not found";
+
         }
 
     }
@@ -1163,15 +1153,6 @@ class Write extends Controller
         }
     }
 
-    public function addSchedule(Request $re)
-    {
-        $postId = $re->postId;
-        $title = $re->title;
-        $caption = $re->caption;
-        $link = $re->link;
-        $image = $re->image;
-        $data = $re->status;
-    }
 
 //    instagram post
     public static function inWriteS($postId, $image, $caption)
@@ -1197,9 +1178,7 @@ class Write extends Controller
 
     public static function lnWriteS($postId, $title, $image, $description, $content, $imagetype, $sharepost, $link)
     {
-//        if ($request->has('image') && $request->sharepost == 'no') {
-//            throw new Exception('Only image posting is not available for linkedin. Rather try Link Post');
-//        }
+
         $linkedIn = new LinkedIn(Data::get('liClientId'), Data::get('liClientSecret'));
         $companies = LinkedinController::companies($linkedIn);
         $body = [

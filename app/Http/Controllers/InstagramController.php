@@ -131,8 +131,6 @@ class InstagramController extends Controller
 
         $data = $this->instagram->getFollowingRecentActivity();
         $datas = $data->fullResponse->stories;
-//        print_r($datas->fullResponse->stories);
-////        exit;
         return view('instagramFollowingActivity', compact('datas'));
     }
 
@@ -308,8 +306,6 @@ class InstagramController extends Controller
         }
 
         $datas = $this->instagram->mediaInfo($mediaId);
-//        print_r($datas);
-//        exit;
         $data = $datas->items[0];
         return view('instagramMediaInfo', compact('data'));
     }

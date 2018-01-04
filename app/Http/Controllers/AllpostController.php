@@ -22,7 +22,7 @@ class AllpostController extends Controller
      */
     public function index()
     {
-        $posts = \App\Allpost::where('userId',Auth::user()->id)->get();
+        $posts = \App\Allpost::where('userId', Auth::user()->id)->get();
         return view('allpost', compact('posts'));
     }
 
@@ -33,13 +33,12 @@ class AllpostController extends Controller
     public function delFromAll(Request $re)
     {
 
-        $fbDel = FacebookController::fbDel($re->postId);
-        $fbgDel = FacebookController::fbgDel($re->postId);
-        $twDel = Write::twDel($re->postId);
-        $wpDel = WordpressController::wpDel($re->postId);
-        $tuDel = Write::tuDel($re->postId);
-        Allpost::where('postId', $re->postId)->where('userId',Auth::user()->id)->delete();
-//        return "Facebook Page : " .$fbDel . "Facebook Grouup ".$fbgDel." | ".$twDel." | ".$wpDel." | ".$tuDel;
+        FacebookController::fbDel($re->postId);
+        FacebookController::fbgDel($re->postId);
+        Write::twDel($re->postId);
+        WordpressController::wpDel($re->postId);
+        Write::tuDel($re->postId);
+        Allpost::where('postId', $re->postId)->where('userId', Auth::user()->id)->delete();
         return "Done";
 
     }
@@ -50,7 +49,7 @@ class AllpostController extends Controller
     public function delAll()
     {
         try {
-            Allpost::where('userId',Auth::user()->id)->truncate();
+            Allpost::where('userId', Auth::user()->id)->truncate();
             return "success";
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -58,11 +57,16 @@ class AllpostController extends Controller
 
     }
 
-    public function delPost(Request $request){
-        try{
-            Allpost::where('userId',Auth::user()->id)->where('id',$request->id)->delete();
+    /**
+     * @param Request $request
+     * @return string
+     */
+    public function delPost(Request $request)
+    {
+        try {
+            Allpost::where('userId', Auth::user()->id)->where('id', $request->id)->delete();
             return "success";
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return $exception->getMessage();
         }
 

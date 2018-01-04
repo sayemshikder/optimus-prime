@@ -22,7 +22,7 @@ class Conversation extends Controller
     {
 //        check if fbAppSec exists
 
-        if(Setting::where('userId',Auth::user()->id)->value('fbAppSec') == ""){
+        if (Setting::where('userId', Auth::user()->id)->value('fbAppSec') == "") {
             return redirect('/settings');
         }
         /** @var object $fb */
@@ -101,8 +101,6 @@ class Conversation extends Controller
 
         } catch (FacebookSDKException $fsdk) {
             return $fsdk->getMessage() . " [fbc fsdk]";
-        } catch (FacebookResponseException $fbr) {
-            return $fbr->getMessage() . " [fbc fbr]";
         }
 
         return view('conpage', compact('data'));
@@ -184,7 +182,8 @@ class Conversation extends Controller
      * @param $mId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
      */
-    public function message($pageId, $mId){
+    public function message($pageId, $mId)
+    {
         $fb = new Facebook([
             'app_id' => Data::get('fbAppId'),
             'app_secret' => Data::get('fbAppSec'),
@@ -195,8 +194,8 @@ class Conversation extends Controller
 
         try {
 
-            $data = $fb->get($mId."?fields=from,message,to,created_time", $token)->getDecodedBody();
-            return view('message',compact('data'));
+            $data = $fb->get($mId . "?fields=from,message,to,created_time", $token)->getDecodedBody();
+            return view('message', compact('data'));
 
         } catch (FacebookSDKException $fsdk) {
             return $fsdk->getMessage() . " [fbc fsdk]";

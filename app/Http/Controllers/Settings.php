@@ -30,7 +30,7 @@ class Settings extends Controller
      */
     public function index()
     {
-//        Prappo::index();
+
         session_start();
 
         // Wordpress

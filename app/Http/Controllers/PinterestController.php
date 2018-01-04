@@ -16,24 +16,9 @@ class PinterestController extends Controller
     {
         $pinterest = PinterestBot::create();
         $pinterest->auth->login(Data::get('pinUser'), Data::get('pinPass'));
-//        $pins = $pinterest->pins->search('food')->toArray();
-//        $searchInPins = $pinterest->pins->searchInMyPins('islam')->toArray();
-//        $searchInPeople = $pinterest->pinners->search('food')->toArray();
-//        $boards = $pinterest->boards->search('marketing stuff')->toArray();
-//        $myBoards = $pinterest->boards->forUser('uncrate');
-//        $me = $pinterest->boards->forMe();
-//        print_r($me);
 
-
-        // Get lists of your boards
         $boards = $pinterest->boards->forMe();
         print_r($boards);
-
-// Create a pin
-//        $pinterest->pins->create('https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png', $boards[0]['id'], 'Pin description');
-
-// Wait 5 seconds
-//        $pinterest->wait(5);
 
 
     }

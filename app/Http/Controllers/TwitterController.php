@@ -68,7 +68,7 @@ class TwitterController extends Controller
         try {
             $data = $twitter->request('statuses/retweet', 'POST', array('id' => $id));
             return "success";
-//            print_r($data);
+
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -265,7 +265,7 @@ class TwitterController extends Controller
             echo '<div class="alert alert-success" role="alert">Successfully sent to ' . $count . ' users </div>';
 
         } catch (\TwitterException $e) {
-//            die("something went wrong . We couldn't fetch data form twitter . May be maximum api request done");
+
             return "error";
         }
     }

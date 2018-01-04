@@ -164,18 +164,7 @@ class Plugins extends Controller
         }
     }
 
-    public function test()
-    {
-//        try{
-//            $content = \File::get(base_path('Modules/Prappo/menu.php'));
-//            print_r($content);
-//        }catch (\Exception $exception){
-//            return $exception->getMessage();
-//        }
-//        include(base_path('Modules/Prappo/menu.php'));
-        echo(self::menu());
 
-    }
 
     public static function check($pluginName,$userId)
     {

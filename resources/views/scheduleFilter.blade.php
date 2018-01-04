@@ -9,50 +9,51 @@
 
         <div class="content-wrapper">
             <section class="content">
-                <div class="row">
-                    <div class="box box-primary" style="padding:20px">
-                        <form action="{{url('/schedule/filter')}}" method="post">
-                            From
-                            <input @if(isset($_POST['from'])) value="{{$_POST['from']}}" @endif type="date" name="from">
-                            To
-                            <input @if(isset($_POST['to'])) value="{{$_POST['to']}}" @endif type="date" name="to">
+                {{--<div class="row">--}}
+                    {{--<div class="box box-primary" style="padding:20px">--}}
+                        {{--<form action="{{url('/schedule/filter')}}" method="post">--}}
+                            {{--From--}}
+                            {{--<input @if(isset($_POST['from'])) value="{{$_POST['from']}}" @endif type="date" name="from">--}}
+                            {{--To--}}
+                            {{--<input @if(isset($_POST['to'])) value="{{$_POST['to']}}" @endif type="date" name="to">--}}
 
 
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-filter"></i> Filter</button>
-                            <div class="btn-group">
-                                <a href="{{url('/schedule/filter/week')}}" class="btn btn-success"><i
-                                            class="fa fa-filter"></i> This week</a>
-                                <a href="{{url('/schedule/filter/month')}}" class="btn btn-warning"><i
-                                            class="fa fa-filter"></i> This month</a>
+                            {{--<button type="submit" class="btn btn-primary"><i class="fa fa-filter"></i> Filter</button>--}}
+                            {{--<div class="btn-group">--}}
+                                {{--<a href="{{url('/schedule/filter/week')}}" class="btn btn-success"><i--}}
+                                            {{--class="fa fa-filter"></i> This week</a>--}}
+                                {{--<a href="{{url('/schedule/filter/month')}}" class="btn btn-warning"><i--}}
+                                            {{--class="fa fa-filter"></i> This month</a>--}}
                                 {{--<a href="{{url('/schedule/filter/all')}}" class="btn btn-default"><i--}}
                                 {{--class="fa fa-list"></i> All</a>--}}
-                            </div>
-                        </form>
+                            {{--</div>--}}
+                        {{--</form>--}}
 
 
-                    </div>
+                    {{--</div>--}}
 
-                </div>
-                @foreach(array_chunk($data,7) as $d)
-                    <?php $count = count($d);?>
-                    <div class="row @if($count < 7) daysboxExtra @else daysbox @endif">
-                        @foreach($d as $a)
+                {{--</div>--}}
 
-                            <div class="@if($count < 7) dayBoxExtra @else dayBox @endif">
-                                <div class="dayHead">
+                    <div class="">
+                        @foreach(\App\OptSchedul::where('userId',Auth::user()->id)->get() as $a)
+
+                            <div class="">
+                                {{--<div class="dayHead">--}}
                                     {{--Monday--}}
-                                    {{\Carbon\Carbon::parse($a)->format('l')}}
-                                    <a style="color:red">{{\Carbon\Carbon::parse($a)->format('jS F')}}</a>
+                                    {{--{{\Carbon\Carbon::parse($a)->format('l')}}--}}
+                                    {{--<a style="color:red">{{\Carbon\Carbon::parse($a)->format('jS F')}}</a>--}}
 
                                     {{--@if(\Carbon\Carbon::parse($a)->format('l') == "Monday")--}}
                                     {{--{{\Carbon\Carbon::parse($a)->format('jS F ')}}--}}
                                     {{--@endif--}}
-                                </div>
+                                {{--</div>--}}
 
-                                @foreach(\App\OptSchedul::where('userId',Auth::user()->id)->where('date',$a)->get() as $da)
+                                {{--@foreach(\App\OptSchedul::where('userId',Auth::user()->id)->where('date',$a)->get() as $da)--}}
+                                @foreach(\App\OptSchedul::where('userId',Auth::user()->id)->get() as $da)
                                     <div class="row">
+                                        <div class="col-md-4">
                                         <div class="sContainer colorFb">
-                                            <span class="sTime">{{\Carbon\Carbon::parse($da->time)->toTimeString()}}</span>
+                                            <span class="badge">{{\Carbon\Carbon::parse($da->time)->toTimeString()}}</span>
                                             @if($da->image != "")
                                                 <img src="{{url('/uploads')}}/{{$da->image}}">
                                             @else
@@ -84,11 +85,11 @@
                                                 {{$da->content}}
                                             </p>
                                             @if($da->published == "yes")
-                                                <button type="button" class="btn btn-block btn-xs bg-olive">Published
+                                                <button type="button" class="btn btn-xs bg-olive">Published
                                                 </button>
                                             @else
                                                 <button data-id="{{$da->id}}" type="button"
-                                                        class="btn btn-block btn-warning btn-xs scheduled">
+                                                        class="btn btn-warning btn-xs scheduled">
                                                     Scheduled
                                                 </button>
                                                 <div id="{{$da->id}}" style="display:none;" align="center">
@@ -109,8 +110,10 @@
                                                 </div>
                                             @endif
                                         </div>
+                                        </div>
                                     </div>
                                 @endforeach
+                                {{--@endforeach--}}
                             </div>
                             {{--<div class="dayBox">--}}
                             {{--<div class="dayHead">--}}
@@ -188,7 +191,7 @@
                         @endforeach
                     </div>
                     <br>
-                @endforeach
+
             </section>{{--End content--}}
         </div>{{--End content-wrapper--}}
         @include('components.footer')

@@ -147,7 +147,7 @@ class Skype extends Controller
 
             return true;
         } else {
-            trigger_error("Skype ($skypeUsername) : Authentication failed line ".__LINE__, E_USER_WARNING);
+
             exit;
         }
     }

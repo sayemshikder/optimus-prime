@@ -17,10 +17,9 @@ class Youtube extends Controller
     {
         $youtube = new \YouTubeDownloader();
         $video = $youtube->getDownloadLinks($request->link);
-//        print_r($video);
+
         foreach ($video as $no => $data) {
-//            echo $data['url']."<br>";
-//            echo $data['format']."<br>";
+
 
             echo "<div class=\"info-box bg-red\">
             <span class=\"info-box-icon\"><i class=\"fa fa-download\"></i></span>

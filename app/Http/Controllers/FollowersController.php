@@ -57,7 +57,7 @@ class FollowersController extends Controller
             $fc = $followerCount[0]->user->followers_count;
             return $fc; // count twitter followers
         } catch (\TwitterException $e) {
-//            die("something went wrong . We couldn't fetch data form twitter . May be maximum api request done");
+
             return "error";
         }
     }
@@ -81,7 +81,7 @@ class FollowersController extends Controller
 
             return $client->getBlogFollowers($blogName, null)->total_users;
         } catch (\Exception $e) {
-//            return $e->getMessage();
+
             return "N/A";
         }
     }

@@ -87,7 +87,7 @@ class Scraper extends Controller
                             </thead>
                             <tbody>';
             foreach ($datas->statuses as $no => $data) {
-//
+
 
                 echo "<tr>";
                 echo "<td>{$data->id}</td>";
@@ -122,7 +122,7 @@ class Scraper extends Controller
 
         } elseif ($type == 'user') {
             $datas = $twitter->request('users/search', 'GET', array('q' => $query, 'count' => $limit));
-//            print_r($datas);
+
 
             echo '
                 <table id="mytable" class="table table-bordered table-striped" cellspacing="0" width="100%">

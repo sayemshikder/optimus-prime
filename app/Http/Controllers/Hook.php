@@ -59,10 +59,7 @@ class Hook extends Controller
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-//        Prappo::notify("title", "good", "http://google.com", "cool", "2432432");
 
-//Execute the request but first check if the message is not empty.
-        $time = "";
         if (!empty($input['entry'][0]['messaging'][0]['message'])) {
             $result = curl_exec($ch);
             $timestamp = $input['entry'][0]['time'];
@@ -78,11 +75,11 @@ class Hook extends Controller
                 $pageName = "";
             }
 
-//            Prappo::notify(($pageName != "") ? $pageName . ' Message' : 'Message', $question, url('/') . '/conversations/message/' . $pageId . '/m_' . $mid, 'message', $time);
+
         } else {
 
             if (isset($input['entry'][0]['changes'][0]['feed'])) {
-//                Prappo::notify('Notification', "You got a facebook notification", 'https://facebook.com/', 'fbnotify', $time);
+
             }
 
             $timestamp = $input['entry'][0]['time'];
@@ -90,7 +87,7 @@ class Hook extends Controller
             $date = new \DateTime();
             $date->setTimestamp($timestamp);
             $time = $date->format($datetimeFormat);
-//            Prappo::notify('Notification', "You got a facebook notification", 'https://facebook.com/', 'fbnotify', $time);
+
         }
 
     }

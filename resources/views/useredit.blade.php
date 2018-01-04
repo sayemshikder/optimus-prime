@@ -93,13 +93,13 @@
                                         </label>
                                     </div>
 
-                                    <div class="checkbox">
-                                        <label>
-                                            <input id="pinterest" type="checkbox"
-                                                   @if(\App\Http\Controllers\Data::hasPackage($id,'pinterest')) checked @endif>
-                                            <i class="fa fa-pinterest"></i> Pinterest
-                                        </label>
-                                    </div>
+                                    {{--<div class="checkbox">--}}
+                                        {{--<label>--}}
+                                            {{--<input id="pinterest" type="checkbox"--}}
+                                                   {{--@if(\App\Http\Controllers\Data::hasPackage($id,'pinterest')) checked @endif>--}}
+                                            {{--<i class="fa fa-pinterest"></i> Pinterest--}}
+                                        {{--</label>--}}
+                                    {{--</div>--}}
 
                                     <div class="checkbox">
                                         <label>

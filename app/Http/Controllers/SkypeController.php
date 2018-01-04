@@ -106,10 +106,8 @@ class SkypeController extends Controller
             foreach ($lists as $listno => $list) {
                 try {
                     $skype->sm($list['id'], $re->message);
-//                    echo "<span class=\"pull-right badge bg-green\">Message sent to {$list['id']}</span>";
+
                 } catch (\Exception $d) {
-//                    echo "<span class=\"pull-right badge bg-red\">Can't sent to {$list['id']}</span>";
-//                    echo $d->getMessage();
                 }
             }
             return "success";

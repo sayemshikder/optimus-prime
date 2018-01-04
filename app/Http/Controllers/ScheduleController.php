@@ -142,31 +142,9 @@ class ScheduleController extends Controller
     public function filter(Request $request)
     {
 
-//        $days =  $this->getDatesFromRange($request->from,$request->to);
+
         $data = $this->getDatesFromRange($request->from, $request->to);
-//        foreach (array_chunk($data,7) as $d){
-////            print_r($d);
-//            foreach($d as $a){
-//                print_r($a);
-//            }
-//        }
 
-//        exit;
-//        print_r($data);
-//        exit;
-//        foreach ($days as $day){
-//            echo Carbon::parse($day)->format('jS F ') . "<br>";
-//        }
-//
-//        exit;
-//        $datas = OptSchedul::where('content', 'LIKE', '%');
-//        $data = $datas->whereBetween('time', array(new DateTime($request->from), new DateTime($request->to)))->orderBy('time','asc')->where('userId',Auth::user()->id)->groupby('date')->get();
-
-
-//        foreach ($data as $d){
-//            echo $d->time . "<br>";
-//        }
-//        exit;
         return view('scheduleFilter', compact('data', 'days'));
     }
 
@@ -209,7 +187,6 @@ class ScheduleController extends Controller
         while ($start->lte($end)) {
 
             $dates[] = $start->copy()->format('Y-m-d');
-//            $dates[] = $start->copy()->format('l jS \\of F Y h:i:s A');
 
             $start->addDay();
         }
@@ -233,7 +210,7 @@ class ScheduleController extends Controller
 
     public function fire()
     {
-//        \File::put(base_path('/test.txt'),Carbon::now()->toDateTimeString());
+
         $carbon = new Carbon();
         $tasks = OptSchedul::all();
 

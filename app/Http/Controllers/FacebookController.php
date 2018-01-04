@@ -32,7 +32,7 @@ class FacebookController extends Controller
 
     public function index()
     {
-        if(!Data::myPackage('fb')){
+        if (!Data::myPackage('fb')) {
             return view('errors.404');
         }
 //        check if fbAppSec exists
@@ -57,8 +57,7 @@ class FacebookController extends Controller
             'app_secret' => Data::get('fbAppSec'),
             'default_graph_version' => 'v2.6',
         ]);
-        $getPage = FacebookPages::where('pageId', $defPage)->first();
-//        $pageToken = $getPage->pageToken;
+
         try {
 
             $response = $fb->get('me/?fields=accounts{access_token,id,name,picture,fan_count,feed.limit(10){id,permalink_url,created_time,message,with_tags,from{id,name,picture},link,comments{id,message,comments,from{id,name,picture},created_time},reactions{type}}}', Data::get('fbAppToken'));
@@ -85,7 +84,7 @@ class FacebookController extends Controller
      */
     public function fbGroupIndex()
     {
-        if(!Data::myPackage('fb')){
+        if (!Data::myPackage('fb')) {
             return view('errors.404');
         }
 
@@ -200,7 +199,7 @@ class FacebookController extends Controller
                 return $r->getMessage() . " [ fe ]";
             }
         } else {
-//            return "Post couldn't found";
+
         }
 
 
@@ -233,19 +232,16 @@ class FacebookController extends Controller
                 return $r->getMessage() . " [ fe ]";
             }
         } else {
-//            return "Post couldn't found";
+
         }
 
 
     }
 
-    /**
-     * @param Request $re
-     * make comment on facebook
-     */
+
     public function fbComment(Request $re)
     {
-        if(!Data::myPackage('fb')){
+        if (!Data::myPackage('fb')) {
             return view('errors.404');
         }
 
@@ -305,7 +301,7 @@ class FacebookController extends Controller
      */
     public function fbReport()
     {
-        if(!Data::myPackage('fb')){
+        if (!Data::myPackage('fb')) {
             return view('errors.404');
         }
 
@@ -313,36 +309,6 @@ class FacebookController extends Controller
             return redirect('/settings');
         }
 
-//        $countryData = array();
-//        $cityData = array();
-//
-//        $fb = new \Facebook\Facebook([
-//            'app_id' => Data::get('fbAppId'),
-//            'app_secret' => Data::get('fbAppSec'),
-//            'default_graph_version' => 'v2.6',
-//        ]);
-//
-//
-//        try {
-////            $response = $fb->get("me/accounts?fields=insights,picture,name,fan_count,cover", Data::get('fbAppToken'));
-//            $response = $fb->get("273763529635798?fields=insights,picture,name,fan_count,cover", Data::get('fbAppToken'));
-//            $body = $response->getBody();
-//            $data = json_decode($body, true);
-//
-//        } catch (FacebookResponseException $e) {
-//            echo 'Graph returned an error: ' . $e->getMessage();
-//            exit;
-//        } catch (FacebookSDKException $e) {
-//            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-//            exit;
-//        }
-
-//        foreach($data['insights']['data'] as $d){
-//            echo $d['name'] . "<br>";
-//        }
-
-//        print_r($data);
-//        exit;
 
         return view('selectPageForReport');
 
@@ -351,7 +317,7 @@ class FacebookController extends Controller
 
     public function fbReportSingle($pageId)
     {
-        if(!Data::myPackage('fb')){
+        if (!Data::myPackage('fb')) {
             return view('errors.404');
         }
 
@@ -368,7 +334,6 @@ class FacebookController extends Controller
 
 
         try {
-//            $response = $fb->get("me/accounts?fields=insights,picture,name,fan_count,cover", Data::get('fbAppToken'));
             $data = json_decode($fb->get($pageId . "/insights/page_impressions,page_impressions_unique,page_impressions_paid,page_engaged_users,page_consumptions", Data::get('fbAppToken'))->getBody(), true);
 
 
@@ -379,20 +344,7 @@ class FacebookController extends Controller
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
         }
-//        foreach ($data['data'] as $d) {
-//            echo "===================<br>";
-//            echo ($d['name']."<br>");
-//            echo $d['title']."<br>";
-//            echo $d['description']."<br>";
-//            echo $d['period']."<br>";
-//            echo "<ul>";
-//            foreach ($d['values'] as $values){
-//                echo "<li>".$values['value']."</li>";
-//            }
-//            echo "</ul>";
-//            echo "<br>";
-//        }
-//        print_r($data);
+
 
         return view('fbReportViewSingle', compact('data'));
     }
@@ -403,7 +355,7 @@ class FacebookController extends Controller
     public function fbReportView()
     {
 
-        if(!Data::myPackage('fb')){
+        if (!Data::myPackage('fb')) {
             return view('errors.404');
         }
 
@@ -418,7 +370,7 @@ class FacebookController extends Controller
     public function massSend($pageId)
     {
 
-        if(!Data::myPackage('fb')){
+        if (!Data::myPackage('fb')) {
             return view('errors.404');
         }
 
@@ -447,7 +399,7 @@ class FacebookController extends Controller
     public function massSendIndex()
     {
 
-        if(!Data::myPackage('fb')){
+        if (!Data::myPackage('fb')) {
             return view('errors.404');
         }
 
@@ -1028,7 +980,7 @@ class FacebookController extends Controller
      */
     public function massComment()
     {
-        if(!Data::myPackage('fb')){
+        if (!Data::myPackage('fb')) {
             return view('errors.404');
         }
 
@@ -1128,7 +1080,7 @@ class FacebookController extends Controller
     public static function comment($id, $text)
     {
 
-        if(!Data::myPackage('fb')){
+        if (!Data::myPackage('fb')) {
             return view('errors.404');
         }
 
